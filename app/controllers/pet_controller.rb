@@ -1,13 +1,12 @@
 class PetController < ApplicationController
   get '/pet' do
-    p "user=#{@user}"
-    Pet.where(user_id: @user.id).to_json
+    Pet.all.to_json
   end
 
   post '/pet' do
-    p "hh=#{params}"
+    # p "hh=#{params}"
 
-    Pet.create(user_id: @user.id, creature_id: params[:creature_id]).to_json
+    Pet.create(creature_id: params[:creature_id]).to_json
   end
 
   delete '/pet' do
