@@ -4,21 +4,21 @@ class SpeciesController < ApplicationController
   end
 
   post '/species' do
-    return { message: 'Invalid session' }.to_json if @user.nil?
+    # return { message: 'Invalid session' }.to_json
     @species =
-      @user.species.new(
+      Species.create(
         species_name: params[:species_name],
         description: params[:description],
-      )
-    if @species.save
-      return @species.to_json
-    else
-      'Error: Species not created'
-    end
+      ).to_json
+    @species.save
+    #   return @species.to_json
+    # else
+    #   'Error: Species not created'
+    # end
   end
 
   delete '/species' do
-    return { message: 'Invalid session' }.to_json if @user.nil?
+    return { message: 'Invalid session' }.to_json
 
     @species = Species.find_by(id: params[:id])
     @species.delete

@@ -119,10 +119,6 @@ Pet.create(user_id: user1.id, creature_id: c2.id)
 Pet.create(user_id: user2.id, creature_id: c5.id)
 
 puts 'Creating species...'
-Species.create(
-  species_name: 'JaJa',
-  description: "It's stronger than a lion",
-  user_id: user1.id,
-)
+Species.create(species_name: 'JaJa', description: "It's stronger than a lion")
 
 puts '✅ Done seeding!'
