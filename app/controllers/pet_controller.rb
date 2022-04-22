@@ -9,9 +9,9 @@ class PetController < ApplicationController
     Pet.create(creature_id: params[:creature_id]).to_json
   end
 
-  delete '/pet' do
-    @pet = Pet.find_by_id(params[:id])
-    @pet.delete
-    return { message: 'Removed' }.to_json
+  delete '/pet/:id' do
+    Pet.find_by_id(params[:id]).destroy
+    # @pet.destroy
+    # return { message: 'Removed' }.to_json
   end
 end
